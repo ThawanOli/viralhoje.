@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  // Para produção troque "sqlite" por "postgresql" e ajuste DATABASE_URL.
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String   @id @default(cuid())
+  nomeCompleto  String
+  email         String   @unique
+  cpfHash       String   @unique
+  cpfEncrypted  String
+  senhaHash     String
+  createdAt     DateTime @default(now())
+
+  @@map("users")
+}
+
+// Cache diário das top 10 tendências calculadas por nicho.
+// Uma linha = uma posição no ranking do dia para um nicho.
+model DailyTrend {
+  id              String   @id @default(cuid())
+  niche           String
+  date            String // formato YYYY-MM-DD (fuso America/Sao_Paulo)
+  rank            Int
+  keyword         String
+  formato         String
+  viralScore      Int
+  porqueViralizou String
+  videoId         String
+  videoTitle      String
+  videoUrl        String
+  channelName     String
+  thumbnailUrl    String
+  views           Int
+  likes           Int
+  comments        Int
+  publishedAt     DateTime
+  createdAt       DateTime @default(now())
+
+  @@unique([niche, date, rank])
+  @@index([niche, date])
+  @@map("daily_trends")
+}
