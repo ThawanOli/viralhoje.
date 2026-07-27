@@ -40,11 +40,7 @@ export default async function NichePage({
 
         <PlatformTabs nicheSlug={niche.slug} ativa={plataforma} />
 
-        {plataforma === 'youtube' ? (
-          <YoutubeSection nicheSlug={niche.slug} />
-        ) : (
-          <ExploreSection niche={niche} plataforma={plataforma} />
-        )}
+        {plataforma === 'youtube' ? <YoutubeSection nicheSlug={niche.slug} /> : <InstagramSection niche={niche} />}
 
         <p className="mt-6 text-center text-[11px] leading-relaxed text-white/40">
           Os vídeos exibidos pertencem aos seus respectivos criadores. Baixe e remixe apenas conteúdo
@@ -79,25 +75,17 @@ async function YoutubeSection({ nicheSlug }: { nicheSlug: string }) {
   );
 }
 
-async function ExploreSection({
-  niche,
-  plataforma,
-}: {
-  niche: Niche;
-  plataforma: 'tiktok' | 'instagram';
-}) {
+async function InstagramSection({ niche }: { niche: Niche }) {
   const items = await getExploreItemsForNiche(niche);
-  const nomePlataforma = plataforma === 'tiktok' ? 'TikTok' : 'Instagram';
 
   return (
     <div className="flex flex-col gap-4">
       <div className="rounded-2xl border border-white/10 bg-white/5 p-4 text-xs leading-relaxed text-white/60">
-        O {nomePlataforma} não oferece uma API pública de tendências, então aqui mostramos os temas em
-        alta de hoje no seu nicho — toque em um deles para ver os vídeos mais virais diretamente no{' '}
-        {nomePlataforma}.
+        Aqui mostramos os temas em alta de hoje no seu nicho — toque em um deles para ver os vídeos
+        mais virais diretamente no Instagram.
       </div>
       {items.map((item, i) => (
-        <ExploreCard key={item.keyword} item={item} rank={i + 1} plataforma={plataforma} />
+        <ExploreCard key={item.keyword} item={item} rank={i + 1} />
       ))}
     </div>
   );

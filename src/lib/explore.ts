@@ -5,8 +5,6 @@ import { todayKey } from './trendAggregator';
 export type ExploreItem = {
   keyword: string;
   hashtag: string;
-  tiktokSearchUrl: string;
-  tiktokHashtagUrl: string;
   instagramSearchUrl: string;
   instagramHashtagUrl: string;
 };
@@ -25,8 +23,6 @@ function buildItem(keyword: string): ExploreItem {
   return {
     keyword,
     hashtag,
-    tiktokSearchUrl: `https://www.tiktok.com/search?q=${q}`,
-    tiktokHashtagUrl: `https://www.tiktok.com/tag/${hashtag}`,
     instagramSearchUrl: `https://www.instagram.com/explore/search/keyword/?q=${q}`,
     instagramHashtagUrl: `https://www.instagram.com/explore/tags/${hashtag}/`,
   };

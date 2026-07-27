@@ -2,7 +2,6 @@ import Link from 'next/link';
 
 const PLATFORMS = [
   { id: 'youtube', nome: 'YouTube', emoji: '▶️' },
-  { id: 'tiktok', nome: 'TikTok', emoji: '🎵' },
   { id: 'instagram', nome: 'Instagram', emoji: '📸' },
 ] as const;
 
