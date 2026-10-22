@@ -28,7 +28,7 @@ echo JWT_SECRET="%JWT_SEC%" >> .env
 echo CPF_ENCRYPTION_KEY="%CPF_ENC%" >> .env
 echo CPF_HASH_SECRET="%CPF_HASH%" >> .env
 echo CRON_SECRET="%CRON_SEC%" >> .env
-echo YOUTUBE_API_KEY="AIzaSyD2hW0RWL3LhSt6WwkGyBMW9HtxmyBaJSM" >> .env
+echo YOUTUBE_API_KEY="COLE_SUA_CHAVE_DO_YOUTUBE_AQUI" >> .env
 echo NEXT_PUBLIC_APP_URL="http://localhost:3001" >> .env
 echo.
 
